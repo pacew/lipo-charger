@@ -1,0 +1,32 @@
+TP4056 - charger
+
+input voltage 4 to 8v
+
+if battery < 2.9, trickle charge
+then regular charge until current < 10% of programmed val or over 4.2v
+after falling to 4.05, start charging again
+
+DW01 - protection
+abs max vcc 10v
+overcharge protection 4.25
+overcharge release 4.05
+overdischarge protection 2.4
+overdischarge release 3
+
+overcurrent: stops when the drop across the 2 fets is more than 150 mV.
+current = .15 / Rds*2
+
+max rds at high temp is 35 milliohm * 1.2 (for temp) = 42, to current
+would be .15 / (2*.042) = 1.7 amps.
+
+at typical and low temp: .15/(2* .021) = 3.5 amps
+
+at low temp and min Rds, say 10 milliohm:
+.15 / (2*.010) = 7.5 amps
+
+example battery internal resistance <= 160 miliohm
+at 2.4 volts, a short gives 15 amps
+
+worst case internal resistance 2 ohms
+at 2.4 volts, short gives 1.2 amps
+
